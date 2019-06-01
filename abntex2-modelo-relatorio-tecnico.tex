@@ -1,0 +1,171 @@
+
+% MODELO LATEX PARA TCC DO IFCE 
+% ELABORADO POR CARINA TEIXEIRA DE OLIVEIRA
+% SETEMBRO DE 2017
+
+\documentclass[
+12pt, % tamanho da fonte
+openright, % capítulos começam em pág ímpar (insere página vazia caso preciso)
+oneside, % para impressão somente frente. Oposto a twoside (frente e verso)
+a4paper, % tamanho do papel. 
+% 	% -- opções do pacote babel --
+english,% idioma adicional para hifenização
+%french,% idioma adicional para hifenização
+%spanish,% idioma adicional para hifenização
+brazil,	% o último idioma é o principal do documento
+]{abntex2}
+
+% ------------------------
+% PACOTES
+% Mapear caracteres especiais no PDF
+\usepackage{cmap}
+% Usa a fonte Latin Modern
+\usepackage{times}			
+% Selecao de codigos de fonte.
+\usepackage[T1]{fontenc}		
+% Codificacao do documento (conversão automática dos acentos)
+\usepackage[utf8]{inputenc}		
+% Indenta o primeiro parágrafo de cada seção.
+\usepackage{indentfirst}		
+% Controle das cores
+\usepackage{color}				
+% Inclusão de gráficos
+\usepackage{graphicx}			
+\usepackage{multicol}
+\usepackage{multirow}
+%capitulos
+\usepackage{titlesec}
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% para geração de dummy text
+\usepackage{lipsum}				
+% Pacotes de citações
+% Paginas com as citações na bibl
+\usepackage[brazilian,hyperpageref]{backref}	 
+% Citações padrão ABNT
+\usepackage[alf]{abntex2cite}	
+% CONFIGURAÇÕES DE PACOTES
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+%Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}
+
+% ------------------------
+% atalhos
+\titulo{UM GUIA DE BOAS PRÁTICAS PARA O DESENVOLVIMENTO DE APLICAÇÕES \textit{WEB} NO \textit{FRONT-END}}
+\autor{IVOMAR DE ARRUDA SANTOS}
+\local{ARACATI-CE}
+\data{2018}
+\instituicao{Instituto Federal de Educação, Ciência e Tecnologia do Ceará}
+\tipotrabalho{Trabalho de Conclusão de Curso (TCC)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, o nome da instituição e a área de concentração 
+\preambulo{Modelo canônico de Relatório Técnico e/ou Científico em conformidade
+com as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+
+
+% ------------------------
+% Configurações de aparência do PDF final
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+%informações do PDF
+\makeatletter
+\hypersetup{
+    %pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	%pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+	colorlinks=true,% false: boxed links; true: colored links
+    linkcolor=blue,	% color of internal links
+    citecolor=blue,	% color of links to bibliography
+    filecolor=magenta, % color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+
+% -----------------------
+% Usando o listings
+\usepackage{listings}
+% – inicio codigo fonte
+\lstset{numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+extendedchars=true,
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% – fim codigo fonte
+
+
+% ------------------------
+% Espaçamentos entre linhas e parágrafos 
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.5cm}
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% compila o indice
+\makeindex
+%\input{modeloCapitulos}
+
+\begin{document}
+
+%PARA UTILIZAR ARIAL
+\fontfamily{phv}  %fonte Arial
+\renewcommand{\rmdefault}{phv}      
+
+% Retira espaço extra obsoleto entre as frases.
+%\frenchspacing 
+\include{outrasFolhas/Capa}
+\include{outrasFolhas/FolhaRosto}
+\include{outrasFolhas/FichaCatalografica}
+\include{outrasFolhas/Aprovacao}
+\include{outrasFolhas/Dedicatoria}
+\include{outrasFolhas/Agradecimentos}
+\include{outrasFolhas/Resumo}
+\include{outrasFolhas/Abstract}
+\include{outrasFolhas/ListaIlustracoes}
+\include{outrasFolhas/ListaTabelas}
+\include{outrasFolhas/ListaCodigos}
+\include{outrasFolhas/ListaAbreviaturasSiglas}
+\include{outrasFolhas/Sumario}
+\textual
+
+%CAPITULOS
+\include{capitulos/Introducao} 
+\include{capitulos/FundamentacaoTeorica} 
+\include{capitulos/Proposta} 
+ \include{capitulos/Resultados} 
+ \include{capitulos/Conclusoes} 
+
+% ELEMENTOS PÓS-TEXTUAIS
+\postextual
+% Referências bibliográficas
+\bibliography{abntex2-modelo-references} 
+%\include{outrasFolhas/Apendice} 
+%\include{outrasFolhas/Anexos} 
+
+
+% INDICE REMISSIVO
+%\printindex
+
+\end{document}
+
